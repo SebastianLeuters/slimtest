@@ -1,0 +1,19 @@
+displayErrorDetails: true
+addContentLengthHeader: false
+
+# db settings
+db:
+    host: localhost
+    user: root
+    pass: root
+    name: guestbook
+
+# template rendering
+renderer:
+    template_path: %root_dir%/../templates/
+
+# monolog
+logger:
+    name: slim-app
+    path: %root_dir%/../logs/app.log
+    level: debug
