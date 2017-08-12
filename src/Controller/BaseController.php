@@ -5,6 +5,7 @@ namespace Controller;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Response;
+use Slim\PDO\Database;
 use Traits\ContainerTrait;
 
 abstract class BaseController {
@@ -31,7 +32,7 @@ abstract class BaseController {
     }
 
     /**
-     * @return \PDO
+     * @return Database
      */
     public function getManager() {
         return $this->getContainer()->get('db');
