@@ -11,6 +11,7 @@
 //});
 
 $routingPath = sprintf('%s/../config/routing.yml', __DIR__);
+
 $routeContent = file_get_contents($routingPath);
 $routes = Symfony\Component\Yaml\Yaml::parse($routeContent);
 

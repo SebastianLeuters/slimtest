@@ -6,8 +6,29 @@
 </head>
 <body>
     <h1> test </h1>
-    {% for result in results %}
-        {{ result.name }}
-    {% endfor %}
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <pre>
+        {{ dump(results) }}
+        </pre>
+        {% for result in results %}
+            <tr>
+                <td>
+                    {{ result.name }}
+                </td>
+                <td>
+                    {{ result.description }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
 </body>
 </html>
