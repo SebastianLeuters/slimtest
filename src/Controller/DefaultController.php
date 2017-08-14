@@ -13,21 +13,26 @@ class DefaultController extends BaseController {
      */
     public function homeAction($request, $response, $args) {
 
+
+        $nameKey = $this->csrf->getTokenNameKey();
+        $valueKey = $this->csrf->getTokenValueKey();
+        $name = $request->getAttribute($nameKey);
+        $value = $request->getAttribute($valueKey);
+
         $manager = $this->getManager();
 //        $stm = $manager->prepare('select *
-        $selectStatement = $manager->select()
-            ->from('test');
+        /** @var \mysqli_result  $data */
+        $data = $manager->select('test');
 
-        $stmt = $selectStatement->execute();
-        $data = $stmt->fetchAll();
+        $manager->insert('test', ['name' => 'neuer test2', 'description' => 'neue Beschreibung']);
 
 
         // INSERT INTO users ( id , usr , pwd ) VALUES ( ? , ? , ? )
-        $insertStatement = $manager->insert(array('name', 'description'))
-            ->into('test')
-            ->values(array('Neuer name', 'Neue Beschreibung'));
+//        $insertStatement = $manager->insert(array('name', 'description'))
+//            ->into('test')
+//            ->values(array('Neuer name', 'Neue Beschreibung'));
 
-        $insertId = $insertStatement->execute(false);
+//        $insertId = $insertStatement->execute(false);
 
 
 //        $stm = $manager->query('select * from test');
@@ -36,6 +41,10 @@ class DefaultController extends BaseController {
 
 
         return $this->render($response, 'index.html.twig', [
+            'nameKey' => $nameKey,
+            'name' => $name,
+            'valueKey' => $valueKey,
+            'value' => $value,
             'results' => $data
         ]);
     }

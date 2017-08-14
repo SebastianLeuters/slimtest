@@ -17,6 +17,6 @@ $routes = Symfony\Component\Yaml\Yaml::parse($routeContent);
 
 foreach($routes as $routeName => $route) {
     if(isset($route['path']) && isset($route['defaults']['_controller'])) {
-        $app->map(isset($route['metohods']) ? $route['methods'] : ['GET'], $route['path'],  $route['defaults']['_controller']);
+        $app->map(isset($route['methods']) ? $route['methods'] : ['GET'], $route['path'],  $route['defaults']['_controller']);
     }
 }

@@ -4,9 +4,11 @@ addContentLengthHeader: false
 # db settings
 db:
     host: localhost
+    port: 3306
+    database: guestbook
     user: root
-    pass: root
-    name: guestbook
+    password: root
+
 
 # template rendering
 renderer:

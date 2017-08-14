@@ -2,19 +2,11 @@
 
 namespace Controller;
 
-use Psr\Container\ContainerInterface;
+use Jgut\Slim\Controller\Base;
+use Orm\DatabaseAdapterInterface;
 use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Response;
-use Slim\PDO\Database;
-use Traits\ContainerTrait;
 
-abstract class BaseController {
-    use ContainerTrait;
-
-    // constructor receives container instance
-    public function __construct(ContainerInterface $container) {
-        $this->container = $container;
-    }
+abstract class BaseController extends Base {
 
     /**
      * Renders a template
@@ -32,7 +24,7 @@ abstract class BaseController {
     }
 
     /**
-     * @return Database
+     * @return DatabaseAdapterInterface
      */
     public function getManager() {
         return $this->getContainer()->get('db');
